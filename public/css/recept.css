@@ -1,0 +1,222 @@
+/* <?php header("Content-type: text/css"); ?> */
+* {
+    box-sizing: border-box;
+}
+
+h2 {
+    text-align: center;
+    font-size: 28px;
+    margin: 0em 0em 0.5em 0em;
+    background-color: rgb(233, 210, 196);
+    border-radius: 12px;
+    padding: 0.5%;
+}
+
+h3 {
+    font-size: 20px;
+    margin: 0.3em 1%;
+}
+
+.header4 {
+    display: block;
+    margin: 0.3em 1%;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#ingredienser ul {
+    margin: 0.3em 0%;
+}
+
+#ingredienser ul li {
+    margin: 0.1em 1%;
+}
+
+#beskrivning p {
+    margin: 0.3em 1%;
+}
+
+h5 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0.1em;
+}
+
+p {
+    font-weight: lighter;
+}
+
+#titel {
+    position: relative;
+    display: block;
+    padding: 0.3em;
+    margin: 0%;
+    cursor: default;
+}
+
+#bild {
+    position: relative;
+    display: inline;
+    width: 35%;
+    padding: 0.5%;
+    float: left;
+    background-color: rgb(233, 210, 196);
+    border-radius: 20px;
+    margin-bottom: 1em;
+    vertical-align: middle;
+}
+
+img {
+    max-height: 100%;
+    width: 100%;
+    border-radius: 20px;
+}
+
+#ingredienser {
+    position: relative;
+    display: inline;
+    width: 24%;
+    padding: 0.5%;
+    float: left;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+    background-color: rgb(233, 210, 196);
+    border-radius: 20px;
+    margin-bottom: 1em;
+    cursor: default;
+}
+
+#beskrivning {
+    position: relative;
+    display: inline;
+    width: 35%;
+    padding: 0.5%;
+    float: left;
+    background-color: rgb(233, 210, 196);
+    border-radius: 20px;
+    margin-bottom: 1em;
+    cursor: default;
+}
+
+#recensioner {
+    position: relative;
+    display: block;
+    clear: left;
+    background-color: rgb(233, 210, 196);
+    border-radius: 20px;
+    padding: 0.5%;
+    cursor: default;
+}
+
+/* <?php
+
+    session_start();
+    
+    $displayTextbox = "block";
+    $dontDisplayTextbox = "none";
+
+    if (isset($_SESSION["loggedInUser"])){
+        $display = $displayTextbox;
+    } else {
+        $display = $dontDisplayTextbox;
+    }
+?> */
+
+#SkapaRecensioner {
+    width: 100%;
+    height: fit-content;
+    overflow: hidden;
+    /* display: <?php echo $display; ?>; */
+}
+
+form {
+    margin: 0% 1%;
+}
+
+.container {
+    padding: 16px;
+}
+
+label {
+    display: block;
+}
+
+textarea {
+    width: 88%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    float: left;
+    border: 1px solid rgb(180, 145, 122);
+    border-radius: 6px;
+    box-sizing: border-box;
+    background-color: rgb(253, 238, 230);
+}
+
+input[placeholder] {
+    font-family: "Comic sans MS";
+}
+
+/* Set a style for all buttons */
+.btn {
+    display: inline-block;
+    padding: 14px 20px;
+    margin: 8px 0;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    background-color: rgb(179, 152, 135);
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 8px rgb(110, 95, 85);
+    width: 10%;
+    float: right;
+    font-family: "Comic sans MS";
+}
+  
+/* Add a hover effect for buttons */
+.btn:hover {background-color: rgb(163, 136, 119);}
+
+/* Extra style for the cancel button (red) */
+.btn:active {
+    background-color: rgba(163, 136, 119);
+    box-shadow: 0 4px rgb(110, 95, 85);
+    transform: translateY(4px);
+}
+
+#InlästaRecensioner {
+    width: 95.4%;
+    height: fit-content;
+    padding: 0% 2.3% 2% 2.3%;
+}
+
+hr {
+    border: 0px 1px 0px 1px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+#commentfield {
+    width: 100%;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    padding-top: 12px;
+    display: grid;
+    grid-template-columns: 11% 89%;
+}
+
+#uname {
+    display: inline-block;
+    padding-left: 1%;
+}
+
+#comment {
+    display: inline-block;
+}
+
+hr {
+    border-color: rgb(180, 145, 122);
+    width: 100%;
+    float: left;
+}

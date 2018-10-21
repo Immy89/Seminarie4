@@ -1,0 +1,112 @@
+#ram {
+    background-color: rgb(224, 198, 185);
+    border-radius: 10px;
+    margin: 0% 1%;
+    min-height: 320px;
+    height: fit-content;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.rubrik {
+    font-size: 22px;
+    padding: 1.5% 2%;
+    cursor: default;
+}
+
+.meddelande{
+    padding: 0% 2% 0% 2%;
+    color: red;
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password], input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid rgb(253, 238, 230);
+    border-radius: 6px;
+    box-sizing: border-box;
+    background-color: rgb(253, 238, 230);
+}
+
+input[placeholder] {
+    font-family: "Comic sans MS";
+}
+
+/* Set a style for all buttons */
+.btn {
+    display: inline-block;
+    padding: 14px 20px;
+    margin: 8px 0;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    background-color: rgb(179, 152, 135);
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 8px rgb(110, 95, 85);
+    width: 100%;
+    font-family: "Comic sans MS";
+}
+  
+/* Add a hover effect for buttons */
+.btn:hover {background-color: rgb(163, 136, 119);}
+
+/* Extra style for the cancel button (red) */
+.btn:active {
+    background-color: rgba(163, 136, 119);
+    box-shadow: 0 4px rgb(110, 95, 85);
+    transform: translateY(4px);
+}
+
+/* Extra style for the cancel button (red) */
+.cancelbtn {
+    float: right;
+    width: auto;
+}
+
+p {
+    padding: 0% 2% 2% 2%;
+    cursor: default;
+}
+
+.info {
+    font-size: 10px;
+    padding-left: 2%;
+    color: red;
+}
+
+/* Add padding to containers */
+.cont {
+    padding: 16px;
+}
+
+/* The "Forgot password" text */
+/* span.forgotPassword {
+    float: right;
+    padding-top: 16px;
+}
+
+.forgotPassword a {
+    text-decoration: none;
+    color: black;
+}
+
+.forgotPassword a:hover {
+    font-weight: bold;
+} */
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    /* span.forgotPassword {
+        display: block;
+        float: none;
+    } */
+    .cancelbtn {
+        width: 100%;
+    }
+}
