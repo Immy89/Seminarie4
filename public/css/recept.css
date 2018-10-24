@@ -129,6 +129,11 @@ img {
     /* display: <?php echo $display; ?>; */
 }
 
+.meddelande{
+    padding: 0% 2% 0% 2%;
+    color: red;
+}
+
 form {
     margin: 0% 1%;
 }
@@ -203,7 +208,7 @@ hr {
     margin-bottom: 12px;
     padding-top: 12px;
     display: grid;
-    grid-template-columns: 11% 89%;
+    grid-template-columns: 11% 80% 9%;
 }
 
 #uname {
@@ -213,6 +218,33 @@ hr {
 
 #comment {
     display: inline-block;
+}
+
+#deleteButton {
+    display: inline-block;
+}
+
+.delbtn {
+    display: inline-block;
+    padding: 5px 20px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    background-color: rgb(179, 152, 135);
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 8px rgb(110, 95, 85);
+    float: right;
+    font-family: "Comic sans MS";
+}
+
+.delbtn:hover {background-color: rgb(163, 136, 119);}
+
+.delbtn:active {
+    background-color: rgba(163, 136, 119);
+    box-shadow: 0 4px rgb(110, 95, 85);
+    transform: translateY(4px);
 }
 
 hr {

@@ -9,24 +9,26 @@
         <div class="rubrik">
             <h2>Registrera ny användare</h2>
         </div>
-        @if($message = Session::get('error'))
-            <div class="alert alert-danger alert-block">
-                <strong>{{ $message }}</strong>
-            </div>
-        @endif
-        @if(count($errors) > 0)
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+        <div class="meddelande">
+            @if($message = Session::get('error'))
+                <div class="alert alert-danger alert-block">
+                    <strong>{{ $message }}</strong>
+                </div>
+            @endif
+            @if(count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+        </div>
         <form method="POST" action="{{ url('/register/saveUser') }}">
             {{ csrf_field() }}
-            <span class="info">*Alla fält måste fyllas i.</span>
             <div class="cont">
+                <div class="info">*Alla fält måste fyllas i.</div>
                 <label><b>Email</b></label>
                 <input type="email" name="email"/>
 

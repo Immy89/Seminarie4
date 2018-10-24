@@ -21,20 +21,22 @@
         <h3>Recensioner:</h3>
         @if(Auth::check())
             <div id="SkapaRecensioner">
-                @if($message = Session::get('error'))
-                    <div class="alert alert-danger alert-block">
-                        <strong>{{ $message }}</strong>
-                    </div>
-                @endif
-                @if(count($errors) > 0)
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
+                <div class="meddelande">
+                    @if($message = Session::get('error'))
+                        <div class="alert alert-danger alert-block">
+                            <strong>{{ $message }}</strong>
+                        </div>
+                    @endif
+                    @if(count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                </div>
                 <form action="{{ url('/recipe/post_comment') }}" method="POST">
                     {{ csrf_field() }}
                     <input type="hidden" name="id" value="{{ $id }}" />
@@ -51,6 +53,15 @@
                 <div id="commentfield">
                     <span id="uname">{{ $comment->user->username }}:</span>
                     <span id="comment">{{ $comment->comment }}</span>
+                    <span id="deleteButton">
+                        @if(Auth::id() === $comment->user->id)
+                            <form action="{{ url('/recipe/delete_comment') }}" method="POST">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="cid" value="{{ $comment->commentId }}"/>
+                                <input type="submit" class="delbtn" value="Delete"/>
+                            </form>
+                        @endif
+                    </span>
                 </div>
                 <hr>
             @endforeach
