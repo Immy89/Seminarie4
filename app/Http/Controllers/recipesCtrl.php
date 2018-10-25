@@ -46,4 +46,16 @@ class recipesCtrl extends Controller
             return redirect("/recipe/$recipeId");
         }
     }
+
+    public function deleteComment(Request $request)
+    {
+        $comment = Comment::find($request->get('cid'));
+        $recipeId = $comment->recipeId;
+
+        if (Auth::id() === $comment->user->id)
+        {
+            $comment->delete();
+            return redirect("/recipe/$recipeId");
+        }
+    }
 }
