@@ -13,5 +13,3 @@ Route::get('/Januari2018', 'calendarCtrl@jan18')->name('Januari2018');
 Route::get('/Februari2018', 'calendarCtrl@feb18')->name('Februari2018');
 
 Route::get('/recipe/{id}', 'recipesCtrl@show')->name('show');
-Route::post('/recipe/post_comment', 'recipesCtrl@postComment')->name('postComment');
-Route::post('/recipe/delete_comment', 'recipesCtrl@deleteComment')->name('deleteComment');

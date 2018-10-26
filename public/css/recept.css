@@ -1,4 +1,3 @@
-/* <?php header("Content-type: text/css"); ?> */
 * {
     box-sizing: border-box;
 }
@@ -13,8 +12,10 @@ h2 {
 }
 
 h3 {
+    width: 100%;
+    padding: 0% 2.3% 0% 2.3%;
     font-size: 20px;
-    margin: 0.3em 1%;
+    margin: 0.4em 0% 0.4em 0%;
 }
 
 .header4 {
@@ -108,35 +109,28 @@ img {
     cursor: default;
 }
 
-/* <?php
-
-    session_start();
-    
-    $displayTextbox = "block";
-    $dontDisplayTextbox = "none";
-
-    if (isset($_SESSION["loggedInUser"])){
-        $display = $displayTextbox;
-    } else {
-        $display = $dontDisplayTextbox;
-    }
-?> */
-
 #SkapaRecensioner {
     width: 100%;
+    padding: 0% 2.3% 0% 2.3%;
     height: fit-content;
     overflow: hidden;
-    /* display: <?php echo $display; ?>; */
 }
 
-.meddelande{
-    padding: 0% 2% 0% 2%;
+#meddelande{
     color: red;
 }
 
-form {
-    margin: 0% 1%;
+#inputfield{
+    height: fit-content;
+    display: inline-block;
+    display: grid;
+    grid-template-columns: 82% 8% 10%;
+    height: 100px;
 }
+
+/* form {
+    margin: 0% 1%;
+} */
 
 .container {
     padding: 16px;
@@ -147,9 +141,9 @@ label {
 }
 
 textarea {
-    width: 88%;
+    /* width: 88%; */
     padding: 12px 20px;
-    margin: 8px 0;
+    margin: 0.5% 0% 1% 0%;
     display: inline-block;
     float: left;
     border: 1px solid rgb(180, 145, 122);
@@ -158,15 +152,20 @@ textarea {
     background-color: rgb(253, 238, 230);
 }
 
-input[placeholder] {
-    font-family: "Comic sans MS";
+#count{
+    height: 16px;
+    position: relative;
+    top: 37%;
+    text-align: center;
 }
 
 /* Set a style for all buttons */
-.btn {
+#publishbtn {
+    height: 50%;
     display: inline-block;
+    position: relative;
+    top: 20%;
     padding: 14px 20px;
-    margin: 8px 0;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
@@ -175,23 +174,21 @@ input[placeholder] {
     border: none;
     border-radius: 6px;
     box-shadow: 0 8px rgb(110, 95, 85);
-    width: 10%;
     float: right;
     font-family: "Comic sans MS";
 }
   
 /* Add a hover effect for buttons */
-.btn:hover {background-color: rgb(163, 136, 119);}
+#publishbtn:hover {background-color: rgb(163, 136, 119);}
 
 /* Extra style for the cancel button (red) */
-.btn:active {
+#publishbtn:active {
     background-color: rgba(163, 136, 119);
     box-shadow: 0 4px rgb(110, 95, 85);
     transform: translateY(4px);
 }
 
 #InlästaRecensioner {
-    width: 95.4%;
     height: fit-content;
     padding: 0% 2.3% 2% 2.3%;
 }
@@ -202,7 +199,7 @@ hr {
     margin-bottom: 0px;
 }
 
-#commentfield {
+.commentfield {
     width: 100%;
     margin-top: 12px;
     margin-bottom: 12px;
@@ -211,16 +208,16 @@ hr {
     grid-template-columns: 11% 80% 9%;
 }
 
-#uname {
+.uname {
     display: inline-block;
     padding-left: 1%;
 }
 
-#comment {
+.comment {
     display: inline-block;
 }
 
-#deleteButton {
+.deleteButton {
     display: inline-block;
 }
 

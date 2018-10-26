@@ -16,3 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::get('/comments', 'commentsCtrl@getAllComments');
+Route::post('/comments/post_comment', 'commentsCtrl@postComment');
+Route::post('/comments/delete_comment', 'commentsCtrl@deleteComment');

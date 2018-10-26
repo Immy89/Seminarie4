@@ -21,50 +21,102 @@
         <h3>Recensioner:</h3>
         @if(Auth::check())
             <div id="SkapaRecensioner">
-                <div class="meddelande">
-                    @if($message = Session::get('error'))
-                        <div class="alert alert-danger alert-block">
-                            <strong>{{ $message }}</strong>
-                        </div>
-                    @endif
-                    @if(count($errors) > 0)
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
+                <div id="meddelande">
+                    
                 </div>
-                <form action="{{ url('/recipe/post_comment') }}" method="POST">
-                    {{ csrf_field() }}
-                    <input type="hidden" name="id" value="{{ $id }}" />
-                    <textarea placeholder="Kommentar" name="kommentar" required></textarea>
-                    <input type="submit" class="btn" value="Publicera">
-                </form>
+                <div id="inputfield">
+                    
+                </div>
             </div>
         @endif
         <div id="InlästaRecensioner">
-            @isset($comments)
-                <hr>
-            @endisset
-            @foreach ($comments as $comment)
-                <div id="commentfield">
-                    <span id="uname">{{ $comment->user->username }}:</span>
-                    <span id="comment">{{ $comment->comment }}</span>
-                    <span id="deleteButton">
-                        @if(Auth::id() === $comment->user->id)
-                            <form action="{{ url('/recipe/delete_comment') }}" method="POST">
-                                {{ csrf_field() }}
-                                <input type="hidden" name="cid" value="{{ $comment->commentId }}"/>
-                                <input type="submit" class="delbtn" value="Delete"/>
-                            </form>
-                        @endif
-                    </span>
-                </div>
-                <hr>
-            @endforeach
+            Kunde inte läsa in befintliga kommentarer.
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        var showAllComments = $(function() {
+            $.getJSON("/api/comments?recipeId={{ $id }}", function(comments) {
+                
+                var uid = "{{ Auth::id() }}";
+
+                var htmlAddComment = "";
+                var rid = "{{ $id }}";
+                if (uid != "") {
+                    htmlAddComment = 
+                        `<textarea id="inputcomment" placeholder="Kommentar" name="kommentar" required></textarea>
+                        <span id="count"></span>
+                        <button id="publishbtn">Publicera</button>`;
+                }
+
+                $("#inputfield").html(htmlAddComment);
+
+                $("#inputcomment").keyup(function(){
+                    var count = $("#inputcomment").val().length;
+                    $("#count").html(count + "/1024");
+                });
+
+                $("#publishbtn").click(function() {
+                    var comment = $("#inputcomment").val();
+                    addComment(rid, uid, comment);
+                });
+
+                var htmlShowComments = "";
+                if (comments) {
+                    htmlShowComments += "<hr>";
+                }
+                for (i in comments) {
+                    htmlShowComments += generateComment(comments[i], uid);
+                }
+                $("#InlästaRecensioner").html(htmlShowComments);
+            });
+        });
+
+        var generateComment = function(comment, uid) {
+            commentfield = "";
+            commentfield += 
+                `<div class="commentfield" data-id="${comment["commentId"]}">
+                    <span class="uname">${comment["user"]["username"]}: </span>
+                    <span class="comment">${comment["comment"]}</span>
+                    <span class="deleteButton">`;
+                
+            if (uid == comment["userId"]) {
+                commentfield +=
+                    `<button class="delbtn" onclick="deleteComment(${comment["commentId"]})">Delete</button>`;
+            }
+
+            commentfield += `</span></div><hr>`;
+
+            return commentfield;
+        }
+
+        var deleteComment = function(id) {
+            $.post("/api/comments/delete_comment", { cid: id }, function(data, status, response) {
+                if (response.status == 202) {
+                    var commentField = $(".commentfield[data-id='" + id +"']");
+                    commentField.next().remove();
+                    commentField.remove();
+                }
+            });
+        };
+
+        var addComment = function($rid, $uid, $comment) {
+            $.post("/api/comments/post_comment", { rid: $rid, uid: $uid, comment: $comment }, function(data, status, response) {
+                if (response.status == 201) {
+                    comment = JSON.parse(data);
+                    var newComment = generateComment(comment, $uid);
+                    $("#InlästaRecensioner").append(newComment);
+                }
+                else if (response.status == 200) {
+                    text = "";
+                    for (i in data) {
+                        text += data[i] + "<br>";
+                    }
+                    $("#meddelande").html(text);
+                }
+            });
+        }
+    </script>
 @endsection
