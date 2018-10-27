@@ -47,7 +47,7 @@
                 if (uid != "") {
                     htmlAddComment = 
                         `<textarea id="inputcomment" placeholder="Kommentar" name="kommentar" required></textarea>
-                        <span id="count"></span>
+                        <span id="count">0/1024</span>
                         <button id="publishbtn">Publicera</button>`;
                 }
 
